@@ -55,32 +55,42 @@ Saxon.prototype.receiveDamage = function(damage) {
 function War() {
  this.vikingArmy = [];
  this.saxonArmy = [];
+
  this.addViking = function(Viking){
-   this.vikingArmy += Viking;
+   this.vikingArmy.push(Viking);
  };
+
  this.addSaxon = function(Saxon){
-   this.saxonArmy += Saxon;
+   this.saxonArmy.push(Saxon);
  };
+
  this.vikingAttack = function(){
   let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
   let randomSaxon = this.saxonArmy[randomSaxonIndex];
+
   let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
   let randomViking = this.vikingArmy[randomVikingIndex];
+
   randomSaxon.receiveDamage(randomViking.strength);
+
   if (randomSaxon.health <= 0){
-    this.saxonArmy -= this.randomSaxon;
+    this.saxonArmy.splice(randomSaxon, 1);
   }
  };
  this.saxonAttack = function(){
   let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
   let randomSaxon = this.saxonArmy[randomSaxonIndex];
+
   let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
   let randomViking = this.vikingArmy[randomVikingIndex];
+
   randomViking.receiveDamage(randomSaxon.strength);
+
   if (randomViking.health <= 0){
-    this.vikingArmy -= this.randomViking;
+    this.vikingArmy.splice(randomViking, 1);
   }
  };
+ 
  this.showStatus = function(){
    if (this.saxonArmy.length === 0){
      return "Vikings have won the war of the century!";

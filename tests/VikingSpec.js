@@ -1,9 +1,9 @@
 describe("Soldier", function () {
   var soldier;
   var strength = 150;
-  var health   = 300;
+  var health = 300;
 
-  beforeEach (function () {
+  beforeEach(function () {
     soldier = new Soldier(health, strength);
   });
 
@@ -58,11 +58,11 @@ describe("Soldier", function () {
 
 describe("Viking", function () {
   var viking;
-  var name     = "Harald";
+  var name = "Harald";
   var strength = 150;
-  var health   = 300;
+  var health = 300;
 
-  beforeEach (function () {
+  beforeEach(function () {
     viking = new Viking(name, health, strength);
   });
 
@@ -144,7 +144,7 @@ describe("Viking", function () {
 
 describe("Saxon", function () {
   var saxon;
-  var health   = 60;
+  var health = 60;
   var strength = 25;
 
   beforeEach(function () {
@@ -212,16 +212,16 @@ describe("Saxon", function () {
 describe("War", function () {
   var viking, saxon, war;
 
-  function generateViking () {
-    var name     = "Harald";
+  function generateViking() {
+    var name = "Harald";
     var strength = 150;
-    var health   = 300;
+    var health = 300;
 
     return new Viking(name, health, strength);
   }
 
-  function generateSaxon () {
-    var health   = 60;
+  function generateSaxon() {
+    var health = 60;
     var strength = 25;
 
     return new Saxon(health, strength);
@@ -229,8 +229,8 @@ describe("War", function () {
 
   beforeEach(function () {
     viking = generateViking();
-    saxon  = generateSaxon();
-    war    = new War();
+    saxon = generateSaxon();
+    war = new War();
   });
 
   describe("constructor function", function () {
@@ -286,7 +286,7 @@ describe("War", function () {
   });
 
   describe("Armies Attack", function () {
-    beforeEach (function () {
+    beforeEach(function () {
       war.addViking(viking);
       war.addSaxon(saxon);
     });

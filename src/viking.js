@@ -24,9 +24,9 @@ Viking.prototype.constructor = Viking;
 Viking.prototype.receiveDamage = function(damage) {
   this.health -= damage;
   if (this.health > 0) {
-    return this.name + "has received" + damage + "points of damage";
+    return `${this.name} has received ${damage} points of damage`;
   } else {
-    return this.name + "has died in act of combat";
+    return `${this.name} has died in act of combat`;
   }
 }
 
@@ -45,9 +45,9 @@ Saxon.prototype.constructor = Saxon;
 Saxon.prototype.receiveDamage = function(damage) {
   this.health -= damage;
   if (this.health > 0) {
-    return "A Saxon has received" + damage + "points of damage";
+    return `A Saxon has received ${damage} points of damage`;
   } else {
-    return "A Saxon has died in act of combat";
+    return "A Saxon has died in combat";
   }
 }
 
@@ -90,7 +90,7 @@ function War() {
     this.vikingArmy.splice(randomViking, 1);
   }
  };
- 
+
  this.showStatus = function(){
    if (this.saxonArmy.length === 0){
      return "Vikings have won the war of the century!";

@@ -83,8 +83,24 @@ War.prototype.vikingAttack = function() {
 };
 
 War.prototype.saxonAttack = function() { 
+    var saxRan = Math.floor(Math.random() * this.saxonArmy.length);
+    var vikRan = Math.floor(Math.random() * this.vikingArmy.length);
+    
+    this.vikingArmy[vikRan].receiveDamage(this.saxonArmy[saxRan].strength);
+
+    if (this.vikingArmy[vikRan].health <= 0) {
+        this.vikingArmy.splice(vikRan, 1);
+    }
+    return `${this.vikingArmy[vikRan].name} has received ${this.saxonArmy[saxRan].strength} points of damage`;
 };
 
 War.prototype.showStatus = function() { 
+    if (this.saxonArmy.length === 0) {
+        return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0) {
+        return "Saxons have fought for their lives and survive another day...";
+    } else {
+        return "Vikings and Saxons are still in the thick of battle.";
+    }
 };
 

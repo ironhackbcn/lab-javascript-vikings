@@ -40,7 +40,26 @@ Viking.prototype.battleCry = function() {
 }
 
 // Saxon
-function Saxon() {}
+
+Saxon.prototype = Object.create(Soldier.prototype);
+
+function Saxon(health, strength) {
+  this.health = health;
+  this.strength = strength;
+}
+
+Saxon.prototype.attack = function() {
+  return this.strength;
+}
+
+Saxon.prototype.receiveDamage = function(damage) {
+  this.health -= damage;
+  if(this.health > 0) {
+    return `A Saxon has received ${damage} points of damage`;
+  } else {
+    return `A Saxon has died in combat`;
+  }
+}
 
 // War
 function War() {}

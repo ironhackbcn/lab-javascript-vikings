@@ -13,7 +13,6 @@ Soldier.prototype.receiveDamage = function (damage) {
 }
 
 // Viking
-// I'm really struggling to understand inheritance! 
 
 Viking.prototype = Object.create(Soldier.prototype);
 
@@ -23,17 +22,21 @@ function Viking(name, health, strength) {
   this.strength = strength;
 }
 
-Viking.prototype.attack = function(){
+Viking.prototype.attack = function() {
   return this.strength;
 }
 
-Viking.prototype.receiveDamage = function(damage){
+Viking.prototype.receiveDamage = function(damage) {
   this.health -= damage;
   if(this.health > 0) {
     return `${this.name} has received ${damage} points of damage`;
   } else {
     return `${this.name} has died in act of combat`;
   }
+}
+
+Viking.prototype.battleCry = function() {
+  return `Odin Owns You All!`;
 }
 
 // Saxon

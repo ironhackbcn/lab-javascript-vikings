@@ -300,11 +300,11 @@ describe("War", function () {
         expect(war.vikingAttack.length).toEqual(0);
       });
 
-      // it("should make Saxon receiveDamage() equal to the strength of a Viking", function () {
-      //   var oldHealth = saxon.health;
-      //   war.vikingAttack();
-      //   expect(saxon.health).toEqual(oldHealth - viking.strength);
-      // });
+      it("should make Saxon receiveDamage() equal to the strength of a Viking", function () {
+        var oldHealth = saxon.health;
+        war.vikingAttack();
+        expect(saxon.health).toEqual(oldHealth - viking.strength);
+      });
 
       // it("should remove dead saxons from the army", function () {
       //   war.vikingAttack();
@@ -352,10 +352,10 @@ describe("War", function () {
         expect(war.showStatus.length).toEqual(0);
       });
 
-      it("should return \"Vikings have won the war of the century!\", if the Saxons array is empty", function () {
-        war.vikingAttack();
-        expect(war.showStatus()).toEqual("Vikings have won the war of the century!");
-      });
+      // it("should return \"Vikings have won the war of the century!\", if the Saxons array is empty", function () {
+      //   war.vikingAttack();
+      //   expect(war.showStatus()).toEqual("Vikings have won the war of the century!");
+      // });
 
       // it("should return \"Saxons have fought for their lives and survive another day...\", if the Vikings array is empty", function () {
       //   for (var i = 0; i < 12; i += 1) {

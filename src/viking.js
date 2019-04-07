@@ -78,21 +78,47 @@ War.prototype.addSaxon = function(saxon) {
   this.saxonArmy.push(saxon);
 }
 
-// QUESTION - I don't know why I chose a random viking and a random saxon, but i saw other classmates doing it...
+// QUESTION - I don't know why I chose a random viking and a random saxon, but I saw other classmates doing it...
+
+// QUESTION - I've passed all tests now but am reviewing my code - why don't I need to say let this.saxonIndex = ... ?
+
 War.prototype.vikingAttack = function() {
-  let saxonIndex = Math.floor(Math.random() * saxonArmy.length);
+  let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
   let attackedSaxon = this.saxonArmy[saxonIndex];
   
-  let vikingIndex = Math.floor(Math.random() * vikingArmy.length);
+  let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
   let attacker = this.vikingArmy[vikingIndex];
 
-  // QUESTION - not really a question, but I don't know why this doesn't work. 
-  attackedSaxon.receiveDamage(attacker.strength);
+  let result = attackedSaxon.receiveDamage(attacker.strength);
 
+  if(attackedSaxon.health <= 0){
+   this.saxonArmy.splice(saxonIndex, 1);
+  }
+
+  return result;
+}
+
+War.prototype.saxonAttack = function() {
+  let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+  let attackedViking = this.vikingArmy[vikingIndex];
+  
+  let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+  let attacker = this.saxonArmy[saxonIndex];
+
+  let result = attackedViking.receiveDamage(attacker.strength);
+
+  if(attackedViking.health <= 0){
+   this.vikingArmy.splice(vikingIndex, 1);
+  }
+  return result;
 }
 
 War.prototype.showStatus = function() {
   if(this.saxonArmy.length === 0) {
     return 'Vikings have won the war of the century!';
+  } else if (this.vikingArmy.length === 0) {
+    return "Saxons have fought for their lives and survive another day..."
+  } else {
+    return "Vikings and Saxons are still in the thick of battle."
   }
 }

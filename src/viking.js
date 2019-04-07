@@ -86,7 +86,7 @@ War.prototype.vikingAttack = function () {
 
   let randomIndexSaxon = getRandomWarrior(this.saxonArmy);
   let randomIndexViking = getRandomWarrior(this.vikingArmy);
-  
+
   let result = this.saxonArmy[randomIndexSaxon].receiveDamage(this.vikingArmy[randomIndexViking].strength);
   removeDeadWarriors(this.saxonArmy);
   return result;
@@ -131,3 +131,50 @@ function removeDeadWarriors(arrayWarriors){
     }
   }
 }
+
+
+
+
+
+//Let's make them figth in the console!!!!
+/*
+console.log("INITIALIZING WAR_________________");
+var war = new War();
+
+console.log("CREATING SOME VIKINGS_________________");
+war.addViking(new Viking(`Uros`,300,10));
+war.addViking(new Viking(`Àxel`,250,15));
+war.addViking(new Viking(`Jack`,200,20));
+
+console.log("CREATING SOME SAXONS__________________");
+war.addSaxon(new Saxon(300,10));
+war.addSaxon(new Saxon(250,15));
+war.addSaxon(new Saxon(200,20));
+
+console.log("STARTING BATTLE__________________");
+var i = 0;
+var fighting = true;
+
+while (fighting){
+
+  console.log(`Turn: ${i} -> ${war.showStatus()}`);
+
+  if(war.showStatus() !== `Vikings and Saxons are still in the thick of battle.`){
+
+    fighting = false;
+  }
+  else{
+    if(i % 2 === 0){
+
+      console.log(war.saxonAttack());
+    }
+    else{
+
+      console.log(war.vikingAttack());
+    }
+    i++;
+  }
+}
+
+console.log("BATTLE ENDED__________________");
+*/

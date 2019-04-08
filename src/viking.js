@@ -88,10 +88,13 @@ War.prototype.saxonAttack = function() {
     
     this.vikingArmy[vikRan].receiveDamage(this.saxonArmy[saxRan].strength);
 
+    var textEnd = `${this.vikingArmy[vikRan].name} has received ${this.saxonArmy[saxRan].strength} points of damage`;
+
     if (this.vikingArmy[vikRan].health <= 0) {
-        this.vikingArmy.splice(vikRan, 1);
+        this.vikingArmy.splice(vikRan);
     }
-    return `${this.vikingArmy[vikRan].name} has received ${this.saxonArmy[saxRan].strength} points of damage`;
+    
+    return textEnd;
 };
 
 War.prototype.showStatus = function() { 

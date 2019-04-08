@@ -14,11 +14,11 @@ Soldier.prototype.receiveDamage = function(damage) {
 
 // Viking
 function Viking(name, health, strength) {
-  this.name = name;
   Soldier.call(this, health, strength);
+  this.name = name;
 }
-
-Viking.prototype = new Soldier();
+Viking.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
 
 Viking.prototype.receiveDamage = function(damage) {
   this.health -= damage;
@@ -29,6 +29,7 @@ Viking.prototype.receiveDamage = function(damage) {
   }
 };
 
+
 Viking.prototype.battleCry = function() {
   return "Odin Owns You All!";
 };
@@ -38,11 +39,8 @@ function Saxon(health, strength) {
   Soldier.call(this, health, strength);
 }
 
-Saxon.prototype = new Soldier();
-
-Saxon.prototype.attack = function() {
-  return this.strength;
-};
+Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.constructor = Soldier;
 
 Saxon.prototype.receiveDamage = function(damage) {
   this.health -= damage;
@@ -52,6 +50,8 @@ Saxon.prototype.receiveDamage = function(damage) {
     return "A Saxon has died in combat";
   }
 };
+
+
 
 // War
 function War() {
@@ -68,49 +68,64 @@ War.prototype.addSaxon = function(saxon) {
 };
 
 War.prototype.vikingAttack = function() {
-  var randomNumberForViking = Math.floor(
-    Math.random() * this.vikingArmy.length
-  );
-  var randomNumberForSaxon = Math.floor(Math.random() * this.saxonArmy.length);
 
-  var randomSaxon = this.saxonArmy[randomNumberForSaxon];
-  var randomViking = this.vikingArmy[randomNumberForViking];
+  let randomNumberForViking = getRandomNumber(this.vikingArmy);
+  let randomNumberForSaxon = getRandomNumber(this.saxonArmy);
 
-  // var damage = randomViking.attack();
-  randomSaxon.receiveDamage(randomViking.attack());
+  let randomViking = this.vikingArmy[randomNumberForViking];
+  let randomSaxon = this.saxonArmy[randomNumberForSaxon];
 
-  if (randomSaxon.health < 1) {
-    this.saxonArmy.pop(randomSaxon);
-  }
+  let remainingHP = randomSaxon.receiveDamage(randomViking.strength);
 
-  return randomSaxon.receiveDamage(randomViking.strength);
+  removeDeadGuys(this.saxonArmy);
+
+  return remainingHP;
 };
 
 War.prototype.saxonAttack = function() {
-  var randomNumberForViking = Math.floor(
-    Math.random() * this.vikingArmy.length
-  );
-  var randomNumberForSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+  let randomNumberForViking = getRandomNumber(this.vikingArmy);
+  let randomNumberForSaxon = getRandomNumber(this.saxonArmy);
 
-  var randomSaxon = this.saxonArmy[randomNumberForSaxon];
-  var randomViking = this.vikingArmy[randomNumberForViking];
+  let randomSaxon = this.saxonArmy[randomNumberForSaxon];
+  let randomViking = this.vikingArmy[randomNumberForViking];
 
-  var damage = randomViking.attack();
-  randomSaxon.receiveDamage(damage);
+  let remainingHP = randomViking.receiveDamage(randomSaxon.strength);
 
-  if (randomViking.health < 1) {
-    this.vikingArmy.pop(randomViking);
-  }
+  removeDeadGuys(this.vikingArmy);
 
-  return randomViking.receiveDamage(randomSaxon.strength);
+
+  return remainingHP;
 };
 
 War.prototype.showStatus = function() {
   if (this.saxonArmy.length < 1) {
     return "Vikings have won the war of the century!";
-  }else if (this.vikingArmy.length < 1) {
+  } else if (this.vikingArmy.length < 1) {
     return "Saxons have fought for their lives and survive another day...";
-  } else { 
+  } else {
     return "Vikings and Saxons are still in the thick of battle.";
   }
 };
+
+
+//tools
+var getRandomNumber = function(col) {
+  return Math.floor(Math.random() * col.length);
+};
+
+var removeDeadGuys = function(col) {
+  for (var i = 0; i < col.length; i++) {
+    if (col[i].health < 1) {
+      col.pop(col[i]);
+    }
+  }
+};
+
+var war = new War();
+var v = new Viking("manolo", 20, 10);
+var s = new Saxon(20, 10);
+war.addViking(v);
+war.addViking(v);
+
+war.addSaxon(s);
+war.addSaxon(s);

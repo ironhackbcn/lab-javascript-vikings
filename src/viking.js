@@ -44,5 +44,10 @@ class Saxon {
 
 // War
 class War {
-  constructor() {}
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  addViking(Viking) {}
+  addSaxon(Saxon) {}
 }

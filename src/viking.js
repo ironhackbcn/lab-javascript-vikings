@@ -25,7 +25,9 @@ class Viking {
   receiveDamage(damage) {
     this.health -= damage;
   }
-  battleCry() {}
+  battleCry() {
+    return "Odin Owns You All!";
+  }
 }
 
 // Saxon
@@ -50,4 +52,7 @@ class War {
   }
   addViking(Viking) {}
   addSaxon(Saxon) {}
+  vikingAttack() {}
+  saxonAttack() {}
+  showStatus() {}
 }

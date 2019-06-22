@@ -102,13 +102,19 @@ describe("Viking", function() {
       viking.receiveDamage(50);
       expect(viking.health).toEqual(health - 50);
     });
-    // it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
-    //   expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
-    //   expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
-    // });
-    // it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
-    //   expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
-    // });
+    it('should return "NAME has received DAMAGE points of damage", if the Viking is still alive', function() {
+      expect(viking.receiveDamage(50)).toEqual(
+        name + " has received 50 points of damage"
+      );
+      expect(viking.receiveDamage(75)).toEqual(
+        name + " has received 75 points of damage"
+      );
+    });
+    it('should return "NAME has died in act of combat", if the Viking dies', function() {
+      expect(viking.receiveDamage(health)).toEqual(
+        name + " has died in act of combat"
+      );
+    });
   });
 
   describe("battleCry() method", function() {
@@ -133,9 +139,9 @@ describe("Saxon", function() {
     saxon = new Saxon(health, strength);
   });
 
-  // it("should inherit from Soldier", function () {
-  //   expect(saxon instanceof Soldier).toEqual(true);
-  // });
+  it("should inherit from Soldier", function() {
+    expect(saxon instanceof Soldier).toEqual(true);
+  });
 
   describe("constructor function", function() {
     it("should receive 2 arguments (health & strength)", function() {
@@ -172,13 +178,17 @@ describe("Saxon", function() {
       saxon.receiveDamage(50);
       expect(saxon.health).toEqual(health - 50);
     });
-    // it("should return \"A Saxon has received DAMAGE points of damage\", if the Saxon is still alive", function () {
-    //   expect(saxon.receiveDamage(45)).toEqual("A Saxon has received 45 points of damage");
-    //   expect(saxon.receiveDamage(10)).toEqual("A Saxon has received 10 points of damage");
-    // });
-    // it("should return \"A Saxon has died in combat\", if the Saxon dies", function () {
-    //   expect(saxon.receiveDamage(health)).toEqual("A Saxon has died in combat");
-    // });
+    it('should return "A Saxon has received DAMAGE points of damage", if the Saxon is still alive', function() {
+      expect(saxon.receiveDamage(45)).toEqual(
+        "A Saxon has received 45 points of damage"
+      );
+      expect(saxon.receiveDamage(10)).toEqual(
+        "A Saxon has received 10 points of damage"
+      );
+    });
+    it('should return "A Saxon has died in combat", if the Saxon dies', function() {
+      expect(saxon.receiveDamage(health)).toEqual("A Saxon has died in combat");
+    });
   });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -263,18 +273,18 @@ describe("War", function() {
       it("should receive 0 arguments", function() {
         expect(war.vikingAttack.length).toEqual(0);
       });
-      // it("should make Saxon receiveDamage() equal to the strength of a Viking", function () {
-      //   var oldHealth = saxon.health;
-      //   war.vikingAttack();
-      //   expect(saxon.health).toEqual(oldHealth - viking.strength);
-      // });
-      // it("should remove dead saxons from the army", function () {
-      //   war.vikingAttack();
-      //   expect(war.saxonArmy.length).toEqual(0);
-      // });
-      // it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function () {
-      //   expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
-      // });
+      it("should make Saxon receiveDamage() equal to the strength of a Viking", function() {
+        var oldHealth = saxon.health;
+        war.vikingAttack();
+        expect(saxon.health).toEqual(oldHealth - viking.strength);
+      });
+      it("should remove dead saxons from the army", function() {
+        war.vikingAttack();
+        expect(war.saxonArmy.length).toEqual(0);
+      });
+      it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function() {
+        expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
+      });
     });
 
     describe("saxonAttack() method", function() {
@@ -284,20 +294,22 @@ describe("War", function() {
       it("should receive 0 arguments", function() {
         expect(war.saxonAttack.length).toEqual(0);
       });
-      // it("should make a Viking receiveDamage() equal to the strength of a Saxon", function () {
-      //   var oldHealth = viking.health;
-      //   war.saxonAttack();
-      //   expect(viking.health).toEqual(oldHealth - saxon.strength);
-      // });
-      // it("should remove dead vikings from the army", function () {
-      //   for (var i = 0; i < 12; i += 1) {
-      //     war.saxonAttack();
-      //   }
-      //   expect(war.vikingArmy.length).toEqual(0);
-      // });
-      // it("should return result of calling receiveDamage() of a Viking with the strength of a Saxon", function () {
-      //   expect(war.saxonAttack()).toEqual(viking.name + " has received " + saxon.strength + " points of damage");
-      // });
+      it("should make a Viking receiveDamage() equal to the strength of a Saxon", function() {
+        var oldHealth = viking.health;
+        war.saxonAttack();
+        expect(viking.health).toEqual(oldHealth - saxon.strength);
+      });
+      it("should remove dead vikings from the army", function() {
+        for (var i = 0; i < 12; i += 1) {
+          war.saxonAttack();
+        }
+        expect(war.vikingArmy.length).toEqual(0);
+      });
+      it("should return result of calling receiveDamage() of a Viking with the strength of a Saxon", function() {
+        expect(war.saxonAttack()).toEqual(
+          viking.name + " has received " + saxon.strength + " points of damage"
+        );
+      });
     });
 
     describe("showStatus() method", function() {
@@ -307,19 +319,25 @@ describe("War", function() {
       it("should receive 0 arguments", function() {
         expect(war.showStatus.length).toEqual(0);
       });
-      // it("should return \"Vikings have won the war of the century!\", if the Saxons array is empty", function () {
-      //   war.vikingAttack();
-      //   expect(war.showStatus()).toEqual("Vikings have won the war of the century!");
-      // });
-      // it("should return \"Saxons have fought for their lives and survive another day...\", if the Vikings array is empty", function () {
-      //   for (var i = 0; i < 12; i += 1) {
-      //     war.saxonAttack();
-      //   }
-      //   expect(war.showStatus()).toEqual("Saxons have fought for their lives and survive another day...");
-      // });
-      // it("should return \"Vikings and Saxons are still in the thick of battle.\", if there are still both Vikings and Saxons", function () {
-      //   expect(war.showStatus()).toEqual("Vikings and Saxons are still in the thick of battle.");
-      // });
+      it('should return "Vikings have won the war of the century!", if the Saxons array is empty', function() {
+        war.vikingAttack();
+        expect(war.showStatus()).toEqual(
+          "Vikings have won the war of the century!"
+        );
+      });
+      it('should return "Saxons have fought for their lives and survive another day...", if the Vikings array is empty', function() {
+        for (var i = 0; i < 12; i += 1) {
+          war.saxonAttack();
+        }
+        expect(war.showStatus()).toEqual(
+          "Saxons have fought for their lives and survive another day..."
+        );
+      });
+      it('should return "Vikings and Saxons are still in the thick of battle.", if there are still both Vikings and Saxons', function() {
+        expect(war.showStatus()).toEqual(
+          "Vikings and Saxons are still in the thick of battle."
+        );
+      });
     });
   });
 });

@@ -1,29 +1,29 @@
 // Soldier
-function Soldier (health,strength){
-        this.health = health;
-        this.strength =strength;
-        this.receiveDamage = function(damage) {
-            this.health -= damage;
-        }
+function Soldier (health,strength){
+    this.health = health;
+    this.strength = strength;
+    this.receiveDamage = function(damage) {
+        this.health -= damage;
     }
+}
     Soldier.prototype.attack = function() {
         return this.strength
     }
     
     // Viking
     
-    function Viking(name,health,strength) {
-        this.name = name;
-        Soldier.call(this,health,strength);
-        this.battleCry =function () {
-            return "Odin Owns You All!"
+function Viking(name,health,strength) {
+    this.name = name;
+    Soldier.call(this,health,strength);
+    this.battleCry = function () {
+            return "Odin Owns You All!"
         }
         this.receiveDamage = function(damage) {
             this.health -= damage;
             if(this.health > 0) {
-                return(this.name + " has received " + damage + " points of damage")
+                return(this.name + " has received " + damage + " points of damage")
             } else {
-                return(this.name + " has died in act of combat")
+                return(this.name + " has died in act of combat")
             }
         }
     }
@@ -36,9 +36,9 @@ function Soldier (health,strength){
         this.receiveDamage = function(damage){
             this.health -= damage;
             if(this.health > 0) {
-                return("A Saxon has received " + damage + " points of damage")
+                return("A Saxon has received " + damage + " points of damage")
             } else {
-                return("A Saxon has died in combat")
+                return("A Saxon has died in combat")
             }
         }
     }
@@ -75,15 +75,14 @@ function Soldier (health,strength){
         }
         this.showStatus = function () {
             if(this.vikingArmy.length === 0) {
-                return "Saxons have fought for their lives and survive another day..."
-            }
+                return "Saxons have fought for their lives and survive another day..."
+            }
             if(this.saxonArmy.length === 0) {
-                return "Vikings have won the war of the century!"
+                return "Vikings have won the war of the century!"
             } 
             if(this.vikingArmy != 0 && this.saxonArmy.length != 0) {
-                return "Vikings and Saxons are still in the thick of battle."
+                return "Vikings and Saxons are still in the thick of battle."
             }
         }
     }
-    
     

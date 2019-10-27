@@ -24,10 +24,10 @@ Viking.prototype.receiveDamage = function(damage) {
   }else {
     return `${this.name} has died in act of combat`;
   }
-}
+};
 Viking.prototype.battleCry = function() {
   return "Odin Owns You All!";
-}
+};
 
 // Saxon
 function Saxon(healthArg, strengthArg) {
@@ -42,7 +42,7 @@ Saxon.prototype.receiveDamage = function(damage) {
   }else {
     return `A Saxon has died in combat`;
   }
-}
+};
 
 // War
 function War() {
@@ -86,4 +86,4 @@ War.prototype.showStatus = function() {
   }else {
     return "Vikings and Saxons are still in the thick of battle.";
   }
-}
+};

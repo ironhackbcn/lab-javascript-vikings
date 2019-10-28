@@ -38,16 +38,11 @@ If you open `tests/VikingSpec.js` and take a look at **lines 10-20**. You should
 ```javascript
   describe("constructor function", function () {
     it("should receive 2 arguments (health & strength)", function () {
-      expect(Soldier.length).toEqual(2);
-    });
+      expect(Soldier.length).toEqual(2);});
 
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
+    it("should receive the health property as its 1st argument", function () {expect(soldier.health).toEqual(health);});
 
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 2nd argument", function () { expect(soldier.strength).toEqual(strength);});
   });
 ```
 

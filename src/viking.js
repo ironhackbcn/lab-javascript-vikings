@@ -91,8 +91,8 @@ Saxon.prototype.receiveDamage = function (damage)  {
 
 // War
 function War() {
-    var vikingArmy = {} ;
-    var saxonArmy =  [ ];
+    this.vikingArmy = [] ;
+    this.saxonArmy =  [ ];
     
 }
 

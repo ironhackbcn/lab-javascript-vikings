@@ -156,6 +156,7 @@ Modify the `Viking` constructor function, have it inherit from `Soldier`, reimpl
 
 #### `receiveDamage()` method
 
+
 (This method needs to be **reimplemented** for `Viking` because the `Viking` version needs to have different return values.)
 
 - should be a function

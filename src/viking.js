@@ -47,4 +47,28 @@ Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
 // War
-function War() {}
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+
+
+War.prototype.addViking = function () {
+
+}
+
+War.prototype.addSaxon = function () {
+
+}
+
+War.prototype.vikingAttack = function () {
+
+}
+
+War.prototype.saxonAttack = function () {
+
+}
+
+War.prototype.showStatus = function () {
+
+}

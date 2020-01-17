@@ -22,9 +22,9 @@ describe("Soldier", function () {
   });
 
   describe("attack() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.attack)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(soldier.attack)).toBe("function");
+    });
 
     // it("should receive 0 arguments", function () {
     //   expect(soldier.attack.length).toEqual(0);

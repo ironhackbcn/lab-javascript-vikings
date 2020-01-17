@@ -2,6 +2,7 @@
 function Soldier(health, strength) {
   this.health = health;
   this.strength = strength;
+  this.attack = function () {};
 }
 
 // Viking

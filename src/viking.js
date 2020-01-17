@@ -11,7 +11,14 @@ function Soldier(health, strength) {
 }
 
 // Viking
-function Viking() {}
+function Viking(name, health, strength) {
+  Soldier.call(this, health, strength);
+  this.name = name;
+
+}
+
+Viking.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
 
 // Saxon
 function Saxon() {}

@@ -21,6 +21,9 @@ function Viking(name, health, strength) {
     } else {
       return `${this.name} has died in act of combat`;
     }
+  };
+  this.battleCry = function () {
+    return `Odin Owns You All!`
   }
 }
 

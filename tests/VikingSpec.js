@@ -36,9 +36,9 @@ describe("Soldier", function () {
   });
 
   describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.receiveDamage)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(soldier.receiveDamage)).toBe("function");
+    });
 
     // it("should receive 1 argument (the damage)", function () {
     //   expect(soldier.receiveDamage.length).toEqual(1);

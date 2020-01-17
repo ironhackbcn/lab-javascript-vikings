@@ -1,5 +1,5 @@
 // Soldier
-function Soldier() {}
+function Soldier(health, strength) {}
 
 // Viking
 function Viking() {}

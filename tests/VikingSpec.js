@@ -16,9 +16,9 @@ describe("Soldier", function () {
       expect(soldier.health).toEqual(health);
     });
 
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 2nd argument", function () {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
   describe("attack() method", function () {

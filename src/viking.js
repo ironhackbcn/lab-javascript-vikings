@@ -56,18 +56,29 @@ function War() {
     };
     this.vikingAttack = function(){
         let index = Math.floor(Math.random() * this.saxonArmy.length);
+        let selectedVikingArmy = this.vikingArmy[index];
         let selectedSaxon =this.saxonArmy[index];
-        // if(selectedSaxon.health <=0){ //I thought I needed to check this..
-        this.saxonArmy.splice(index,1);
-        // }
-        return selectedSaxon.receiveDamage(this.vikingArmy[0].strength);
+        let VikingStrength =selectedSaxon.receiveDamage(selectedVikingArmy.strength);
+        if(selectedSaxon.health <=0){ 
+            this.saxonArmy.splice(index,1);
+            return `A Saxon has died in combat`;
+        }
+        else{
+            return VikingStrength;
+        }        
     };
     this.saxonAttack = function(){
         let index = Math.floor(Math.random() * this.vikingArmy.length);
-        let selectedViking =this.vikingArmy[index];
-        this.vikingArmy.splice(index,1);
-        return selectedViking.receiveDamage(this.saxonArmy[0].strength);
+        let selectedViking = this.vikingArmy[index];
+        let selectedSaxon = this.saxonArmy[index];
+
+        let saxonStrength = selectedViking.receiveDamage(selectedSaxon.strength);
+        if (selectedViking.health <= 0) {
+            this.vikingArmy.splice(index, 1); 
+        } else
+            return saxonStrength;
     };
+
     this.showStatus = function(){
         if(this.saxonArmy.length ==0){
             return `Vikings have won the war of the century!`

@@ -25,6 +25,7 @@ Viking.prototype.constructor = Viking;
 
 Viking.prototype.receiveDamage = function(damage) {
   this.health -= damage;
+  // output message if viking died or still fighting
   if (this.health <= 0) {
     return `${this.name} has died in act of combat`;
   } else {
@@ -48,6 +49,7 @@ Saxon.prototype.constructor = Saxon;
 
 Saxon.prototype.receiveDamage = function(damage) {
   this.health -= damage;
+  // output message if saxon died or still fighting
   if (this.health <= 0) {
     return `A Saxon has died in combat`;
   } else {
@@ -70,35 +72,41 @@ War.prototype.addSaxon = function(saxon) {
 };
 
 War.prototype.vikingAttack = function() {
+  // determine random index of both viking and saxon.
   const targetVikingIndex = [Math.floor(Math.random() * this.vikingArmy.length)];
   const targetSaxonIndex = [Math.floor(Math.random() * this.saxonArmy.length)];
-  this.saxonArmy[targetSaxonIndex].receiveDamage(
-    this.vikingArmy[targetVikingIndex].attack()
-  );
-  if (this.saxonArmy[targetSaxonIndex].health < 0) {
+  // viking attack on the saxon
+  this.saxonArmy[targetSaxonIndex].receiveDamage(this.vikingArmy[targetVikingIndex].attack());
+  // remove saxon from army if it dies + message
+  if (this.saxonArmy[targetSaxonIndex].health <= 0) {
     this.saxonArmy.splice(targetSaxonIndex, 1);
     return "A Saxon has died in combat";
   }
+  // output message for the attack
+  return `A Saxon has received ${this.saxonArmy[targetSaxonIndex].strength} points of damage`;
 };
 
 War.prototype.saxonAttack = function() {
+  // determine random index of both viking and saxon.
   const targetVikingIndex = [Math.floor(Math.random() * this.vikingArmy.length)];
   const targetSaxonIndex = [Math.floor(Math.random() * this.saxonArmy.length)];
-  this.vikingArmy[targetVikingIndex].receiveDamage(
-    this.saxonArmy[targetSaxonIndex].attack()
-  );
-  if (this.vikingArmy[targetVikingIndex].health < 0) {
+  // saxon attack on the viking
+  this.vikingArmy[targetVikingIndex].receiveDamage(this.saxonArmy[targetSaxonIndex].attack());
+  // remove viking from army if it dies + message
+  if (this.vikingArmy[targetVikingIndex].health <= 0) {
     this.vikingArmy.splice(targetVikingIndex, 1);
+    return `${this.vikingArmy[targetVikingIndex].name} has died in combat`;
   }
+  // output message for the attack
   return `${this.vikingArmy[targetVikingIndex].name} has received ${this.saxonArmy[targetSaxonIndex].strength} points of damage`;
 };
 
 War.prototype.showStatus = function() {
-    if (this.saxonArmy.length < 1) {
-        return "Vikings have won the war of the century!"
-    } else if (this.vikingArmy.length < 1) {
-        return "Saxons have fought for their lives and survive another day..."
-    } else {
-        return "Vikings and Saxons are still in the thick of battle."
-    }
+  if (this.saxonArmy.length < 1) {
+    return "Vikings have won the war of the century!";
+  } else if (this.vikingArmy.length < 1) {
+    return "Saxons have fought for their lives and survive another day...";
+  } else {
+    return "Vikings and Saxons are still in the thick of battle.";
+  }
 };

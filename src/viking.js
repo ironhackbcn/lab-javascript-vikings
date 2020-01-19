@@ -67,6 +67,13 @@ War.prototype.vikingAttack = function () {
 
   let resultOfBattle = saxon.receiveDamage(viking.attack());
 
+  //Remove all the saxons with 0 or lees points of health
+  for (let i = 0; i < this.saxonArmy.length; i++) {
+    if (this.saxonArmy[i].health <= 0) {
+      this.saxonArmy.splice(i, 1);
+    }
+  }
+
   return resultOfBattle;
 }
 

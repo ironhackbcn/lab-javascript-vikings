@@ -62,7 +62,12 @@ War.prototype.addSaxon = function (saxon) {
 }
 
 War.prototype.vikingAttack = function () {
+  let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
+  let resultOfBattle = saxon.receiveDamage(viking.attack());
+
+  return resultOfBattle;
 }
 
 War.prototype.saxonAttack = function () {

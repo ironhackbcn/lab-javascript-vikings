@@ -17,7 +17,7 @@ function Viking(name, healthArg, strengthArg) {
     Soldier.call(this, healthArg, strengthArg);
     this.name = name;
 }
-
+// connect the viking to the soldier prototype
 Viking.prototype = Object.create(Soldier.prototype); 
 Viking.prototype.constructor = Viking;
 
@@ -38,7 +38,7 @@ Viking.prototype.battleCry = function (){
 function Saxon(healthArg, strengthArg) {
     Soldier.call(this, healthArg, strengthArg)
 }
-
+// connect the saxon to the soldier prototype
 Saxon.prototype = Object.create(Soldier.prototype); 
 Saxon.prototype.constructor = Saxon;
 
@@ -51,7 +51,7 @@ Saxon.prototype.receiveDamage = function(damage) {
     }
 }
 
-// War
+// War 
 function War() {
     this.vikingArmy = [];
     this.saxonArmy = [];
@@ -71,7 +71,7 @@ War.prototype.vikingAttack = function() {
     // chose random saxon and save his position in the Saxon Army Array
     const randomSaxonPosition = Math.floor(Math.random() * this.saxonArmy.length);
     let randomSaxon = this.saxonArmy[randomSaxonPosition];
-    // let the Saxon receive the damage and retun
+    // let the Saxon receive the damage
     let fightOutcome = randomSaxon.receiveDamage(randomViking.strength);
     //remove dead Saxon
     if (randomSaxon.health <= 0) {
@@ -104,4 +104,3 @@ War.prototype.showStatus = function() {
         return "Vikings and Saxons are still in the thick of battle."
     }
 };
-
